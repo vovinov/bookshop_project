@@ -7,4 +7,13 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    pass
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    description = models.TextField()
+    photo = models.ImageField()
+    price = models.IntegerField()
+    in_stock = models.IntegerField()
+    available = models.BooleanField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    slug = models.SlugField(max_length=255)
